@@ -5,6 +5,7 @@
 { config, pkgs, ... }:
 
 {
+  # {template to fill this in automatically on changes }
   imports =
     [
       ./archival.nix
@@ -13,9 +14,11 @@
       ./console.nix
       ./hardware-configuration.nix
       ./hw-and-disk-util.nix
+      ./kernel.nix
       ./nix.nix
-      ./search_files.nix
+      ./search-files.nix
       ./social.nix
+      ./sound.nix
       ./sysadmin-tools.nix
       ./text-editing.nix
     ];
@@ -54,8 +57,8 @@
   services.xserver.desktopManager.plasma5.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  # services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.videoDrivers = [ "mode-setting" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
+  #services.xserver.videoDrivers = [ "mode-setting" ];
   services.xserver.useGlamor = true;
   
 
@@ -78,7 +81,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "wheel" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "$6$7/k2tBTCG$RcUdZo8GNe6u69fQX7bk9CglHkQWzZgT3ChfQiMVYI3agJLHbg8uR4qLlX1PrJr61SA4wweRtXctSyItD4ITP/";
     uid = 1000;
     description = "Nick FooBar";
