@@ -6,6 +6,8 @@
     betterdiscordctl
 
     # social: slack
+    google-chrome
+    google-chrome-beta
 
     zoom-us
   ];
