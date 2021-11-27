@@ -13,6 +13,7 @@
 ./avahi.nix
 ./cachix.nix
 ./console.nix
+./desktop-pkgs.nix
 ./hardware-configuration.nix
 ./hw-and-disk-util.nix
 ./kernel.nix
@@ -22,6 +23,7 @@
 ./sound.nix
 ./sysadmin-tools.nix
 ./text-editing.nix
+./u2f.nix
           ];
 
   # Use the systemd-boot EFI boot loader.
