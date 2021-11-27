@@ -5,29 +5,30 @@
 { config, pkgs, ... }:
 
 {
-  # {template to fill this in automatically on changes }
   imports =
     [
-      ./archival.nix
-      ./avahi.nix
-      ./cachix.nix
-      ./console.nix
-      ./hardware-configuration.nix
-      ./hw-and-disk-util.nix
-      ./kernel.nix
-      ./nix.nix
-      ./search-files.nix
-      ./social.nix
-      ./sound.nix
-      ./sysadmin-tools.nix
-      ./text-editing.nix
-    ];
+# {template to fill this in automatically on changes }
+
+./archival.nix
+./avahi.nix
+./cachix.nix
+./console.nix
+./hardware-configuration.nix
+./hw-and-disk-util.nix
+./kernel.nix
+./nix.nix
+./search-files.nix
+./social.nix
+./sound.nix
+./sysadmin-tools.nix
+./text-editing.nix
+          ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Quercus_alba"; # Define your hostname.
+  networking.hostName = "Yokan"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   #
   networking.networkmanager.enable = true;
@@ -70,7 +71,7 @@
   services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
+  # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).

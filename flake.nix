@@ -6,7 +6,7 @@
   };
   outputs = inputs: rec {
     nixosConfigurations = {
-      Quercusalba = inputs.nixpkgs.lib.nixosSystem {
+      Yokan = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ## Other modules will also be here

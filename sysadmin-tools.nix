@@ -12,6 +12,9 @@
     strace
     lynis
     lsof
+
+    yubikey-manager-qt
+    yubikey-personalization-gui
   ];
 }
 
