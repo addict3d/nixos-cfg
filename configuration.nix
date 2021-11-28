@@ -18,6 +18,7 @@
 ./hw-and-disk-util.nix
 ./kernel.nix
 ./nix.nix
+./python.nix
 ./search-files.nix
 ./social.nix
 ./sound.nix
