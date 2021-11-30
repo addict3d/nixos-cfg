@@ -5,6 +5,9 @@
     # social: discord
     betterdiscordctl
 
+    maim
+
+    freerdp
     # social: slack
     google-chrome
     google-chrome-beta

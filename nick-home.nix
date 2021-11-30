@@ -17,6 +17,11 @@
       '';
     };
 
+    file.".config/nixpkgs/config.nix" = {
+      text = ''
+        { allowUnfree = true; }
+      '';
+    };
     packages = [ pkgs.direnv ];
   };
 
