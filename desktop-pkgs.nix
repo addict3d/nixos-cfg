@@ -2,16 +2,18 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # social: discord
-    betterdiscordctl
-
     maim
 
     freerdp
-    # social: slack
+
+    tigervnc
+
+    krdc
+
     google-chrome
     google-chrome-beta
 
+    winbox
     zoom-us
   ];
 }

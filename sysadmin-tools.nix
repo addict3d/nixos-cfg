@@ -13,6 +13,9 @@
     lynis
     lsof
 
+
+    screen
+
     # yubikey-manager-qt
     # yubikey-personalization-gui
   ];
