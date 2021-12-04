@@ -1,11 +1,10 @@
 {
   description = "Yokan [desktop] NixOS Configuration";
 
-  inputs = {
-    home-manager.url = "github:nix-community/home-manager";
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
-    musnix = { url = "github:musnix/musnix"; };
-  };
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.musnix.url = "github:musnix/musnix";
+  #inputs.nixpkgs-2111.url = "github:nixos/nixpkgs/nixos-21.11";
 
   outputs = inputs: rec {
     nixosConfigurations = {
@@ -14,6 +13,8 @@
         modules = [
           inputs.musnix.nixosModules.musnix
           ./configuration.nix ## Configuration file from regular /etc/nixos config
+
+          # TODO: Clean it up!
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {

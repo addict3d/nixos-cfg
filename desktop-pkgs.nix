@@ -8,6 +8,7 @@
 
     tigervnc
 
+    claws-mail
     krdc
 
     google-chrome

@@ -13,6 +13,7 @@
     lynis
     lsof
 
+    dnsutils
 
     screen
 
