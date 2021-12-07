@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -20,6 +20,7 @@
 ./kernel.nix
 ./nix.nix
 ./python.nix
+./rdp.nix
 ./search-files.nix
 ./social.nix
 ./sound.nix
@@ -41,6 +42,16 @@
   time.timeZone = "America/Detroit";
 
   nixpkgs.overlays = [ (import ./weechat.nix) ];
+
+  # todo: how to incorporate modules?
+  #nix.flakes.enable = true;
+
+  nix.nixPath = let path = toString ./.; in
+    [
+      "repl=${path}/repl.nix"
+      "nixpkgs=${inputs.nixpkgs}"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config

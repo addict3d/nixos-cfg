@@ -5,7 +5,11 @@
     jq
     delta
 
+    jetbrains.idea-community
+
     python39Packages.jsondiff
+
+    silicon
   ];
 }
 

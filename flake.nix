@@ -7,6 +7,9 @@
   #inputs.nixpkgs-2111.url = "github:nixos/nixpkgs/nixos-21.11";
 
   outputs = inputs: rec {
+
+    # nixosModules = import ./nixos/modules;
+
     nixosConfigurations = {
       Yokan = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -20,8 +23,8 @@
             home-manager = {
               backupFileExtension = "bak";
               useGlobalPkgs = true;  # see
-#https://github.com/nix-community/home-manager/issues/1519
-#https://github.com/divnix/devos/issues/30
+                #https://github.com/nix-community/home-manager/issues/1519
+                #https://github.com/divnix/devos/issues/30
               useUserPackages = true;
               users.nick = import ./nick-home.nix;
             };
@@ -33,5 +36,6 @@
         specialArgs = { inherit inputs; }; ## Inherit inputs to configuration.nix so you can call inputs.inputname
        };
       };
+
   };
 }
