@@ -3,6 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     maim
+    vlc
+    dia
 
     freerdp
 
