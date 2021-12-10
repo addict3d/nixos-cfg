@@ -6,6 +6,10 @@
     vlc
     dia
 
+
+    calibre-web
+    calibre
+
     freerdp
 
     tigervnc
