@@ -7,6 +7,8 @@
     dia
 
 
+    obs-studio
+
     calibre-web
     calibre
 
