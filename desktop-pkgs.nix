@@ -6,6 +6,8 @@
     vlc
     dia
 
+    # This should be a service?
+    psi-notify  # manually configure for now
 
     obs-studio
 
