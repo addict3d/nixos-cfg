@@ -4,45 +4,53 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   hardware.cpu.intel.updateMicrocode = true;
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "firewire_ohci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "ehci_pci"
+    "ahci"
+    "firewire_ohci"
+    "xhci_pci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+  ];
+
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   services.fstrim.enable = true;
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/01965894-c23d-443e-8dd3-6a9fef909eff";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/01965894-c23d-443e-8dd3-6a9fef909eff";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5A55-283F";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/5A55-283F";
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/bits" =
-  { label = "bits";
-    fsType = "ntfs3";
-    options = [ "noatime" "ro" ];
-    noCheck = true;
-  };
+    "/mnt/bits" = {
+      label = "bits";
+      fsType = "ntfs3";
+      options = [ "noatime" "ro" ];
+      noCheck = true;
+    };
 
-  fileSystems."/mnt/gold" =
-  { label = "gold";
-    fsType = "ntfs3";
-    options = [ "noatime" "ro" ];
-    noCheck = true;
+    "/mnt/gold" = {
+      label = "gold";
+      fsType = "ntfs3";
+      options = [ "noatime" "ro" ];
+      noCheck = true;
+    };
   };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a34b1d68-a5d9-4ffe-b0a7-8dd02bc049d2"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/a34b1d68-a5d9-4ffe-b0a7-8dd02bc049d2"; }];
 
 }
