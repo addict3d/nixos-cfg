@@ -27,6 +27,20 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/bits" =
+  { label = "bits";
+    fsType = "ntfs3";
+    options = [ "noatime" "ro" ];
+    noCheck = true;
+  };
+
+  fileSystems."/mnt/gold" =
+  { label = "gold";
+    fsType = "ntfs3";
+    options = [ "noatime" "ro" ];
+    noCheck = true;
+  };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/a34b1d68-a5d9-4ffe-b0a7-8dd02bc049d2"; }
     ];
