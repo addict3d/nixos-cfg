@@ -19,6 +19,7 @@
 ./hw-and-disk-util.nix
 ./kernel.nix
 ./nix.nix
+./printer.nix
 ./python.nix
 ./rdp.nix
 ./search-files.nix
@@ -83,9 +84,6 @@
   # Configure keymap in X11
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound.
   # sound.enable = true;

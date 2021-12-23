@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    hplipWithPlugin
-  ];
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ hplip ];
+  };
 }
 
