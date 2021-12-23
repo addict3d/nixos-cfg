@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  systemd.packages = [
+  systemd.packages = with pkgs; [
     psi-notify  # manually configure for now
   ];
     
