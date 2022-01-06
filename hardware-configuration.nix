@@ -45,7 +45,7 @@
     "/mnt/gold" = {
       label = "gold";
       fsType = "ntfs3";
-      options = [ "noatime" "ro" ];
+      options = [ "noatime" ];
       noCheck = true;
     };
   };
