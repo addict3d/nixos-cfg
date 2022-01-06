@@ -11,6 +11,7 @@
     weechat
 
     element-desktop
+    zulip
     ];
 }
 
