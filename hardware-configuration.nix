@@ -3,6 +3,9 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  userGroupList = [ "uid=1000" "gid=100" ];
+in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -38,14 +41,14 @@
     "/mnt/bits" = {
       label = "bits";
       fsType = "ntfs3";
-      options = [ "noatime" "ro" ];
+      options = [ "noatime" "ro" ] ++ userGroupList;
       noCheck = true;
     };
 
     "/mnt/gold" = {
       label = "gold";
       fsType = "ntfs3";
-      options = [ "noatime" ];
+      options = [ "noatime" ] ++ userGroupList;
       noCheck = true;
     };
   };
