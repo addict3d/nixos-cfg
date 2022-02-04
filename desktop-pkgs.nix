@@ -6,9 +6,15 @@
   ];
     
   environment.systemPackages = with pkgs; [
+    gwe
+    nvfancontrol
+    nvtop
+
     maim
     vlc
     dia
+
+    zotero
 
     obs-studio
 
