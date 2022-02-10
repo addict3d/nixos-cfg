@@ -10,6 +10,8 @@
     python39Packages.jsondiff
 
     silicon
+
+    vscode
   ];
 }
 
