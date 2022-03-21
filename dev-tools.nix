@@ -6,6 +6,7 @@
     delta
 
     jetbrains.idea-community
+    jetbrains.clion
 
     python39Packages.jsondiff
 
