@@ -5,6 +5,8 @@
     jq
     delta
 
+    freemind
+
     jetbrains.idea-community
     jetbrains.clion
 
