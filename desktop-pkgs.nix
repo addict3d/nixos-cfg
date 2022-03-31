@@ -16,6 +16,9 @@
 
     zotero
 
+    gimp
+    inkscape
+
     obs-studio
 
     calibre-web
