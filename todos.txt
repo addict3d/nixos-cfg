@@ -1,0 +1,10 @@
+# add android-file-transfer
+
+# add shell convenience function alias for generating password
+
+# [add alias for "fast nix repl w/flakes"](https://nixos.wiki/wiki/Flakes#Getting_Instant_System_Flakes_Repl)
+source /etc/set-environment && nix repl /nix/store/zaam62l90q3yi4lr3kycclxvaa3k89nx-source/repl.nix
+
+# fix-psi-notify (is it broken?)
+https://nixos.org/manual/nixos/stable/#sect-nixos-systemd-nixos
+need to make a link for the user service to run automatically

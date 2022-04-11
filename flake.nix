@@ -2,9 +2,9 @@
   description = "Yokan [desktop] NixOS Configuration";
 
   inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.musnix.url = "github:musnix/musnix";
-  #inputs.nixpkgs-2111.url = "github:nixos/nixpkgs/nixos-21.11";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
 
   outputs = inputs: rec {
 
