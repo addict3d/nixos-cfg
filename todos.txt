@@ -8,3 +8,7 @@ source /etc/set-environment && nix repl /nix/store/zaam62l90q3yi4lr3kycclxvaa3k8
 # fix-psi-notify (is it broken?)
 https://nixos.org/manual/nixos/stable/#sect-nixos-systemd-nixos
 need to make a link for the user service to run automatically
+
+
+nix shell nixpkgs#p7zip
+interop: nix shell nixpkgs#protobuf3_19 nixpkgs#maven
