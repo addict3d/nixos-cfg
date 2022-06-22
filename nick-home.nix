@@ -2,6 +2,8 @@
 
 {
   home = {
+    stateVersion = "22.05";
+
     file.".zshrc" = {
       text = ''
         export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status os_icon)
@@ -46,5 +48,39 @@
         PATH_add "$VIRTUAL_ENV/bin"
       }
     '';
+  };
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    viAlias = true;
+    vimAlias = true;
+
+    coc = {
+      enable = true;
+      # See https://github.com/nix-community/home-manager/issues/2966
+      package = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        pname = "coc.nvim";
+        version = "2022-06-14";
+        src = pkgs.fetchFromGitHub {
+          owner = "neoclide";
+          repo = "coc.nvim";
+          rev = "87e5dd692ec8ed7be25b15449fd0ab15a48bfb30";
+          sha256 = "sha256-bsrCvgQqIA4jD62PIcLwYdcBM+YLLKLI/x2H5c/bR50=";
+        };
+        meta.homepage = "https://github.com/neoclide/coc.nvim/";
+      };
+    };
+    withNodeJs = true; # tmp https://github.com/nix-community/home-manager/pull/3048
+
+    plugins = with pkgs.vimPlugins; [
+      coc-java
+      coc-json
+#     coc-rls
+      jsonc-vim
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      vim-plugin-AnsiEsc
+      vim-nix
+    ];
   };
 }
