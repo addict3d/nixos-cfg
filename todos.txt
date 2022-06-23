@@ -12,3 +12,5 @@ need to make a link for the user service to run automatically
 
 nix shell nixpkgs#p7zip
 interop: nix shell nixpkgs#protobuf3_19 nixpkgs#maven
+nix shell nixpkgs#nixos-generators
+nix shell nixpkgs#niv
