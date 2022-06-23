@@ -70,6 +70,11 @@
         };
         meta.homepage = "https://github.com/neoclide/coc.nvim/";
       };
+      pluginConfig = ''
+        " nav comp list with tab
+        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+      '';
     };
     withNodeJs = true; # tmp https://github.com/nix-community/home-manager/pull/3048
 
