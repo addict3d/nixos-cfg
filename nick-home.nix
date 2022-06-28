@@ -13,18 +13,38 @@
       '';
     };
 
-    file.".bashrc" = {
-      text = ''
-        eval "$(direnv hook bash)"
-      '';
-    };
-
     file.".config/nixpkgs/config.nix" = {
       text = ''
         { allowUnfree = true; }
       '';
     };
     packages = [ pkgs.direnv ];
+  };
+
+  programs.bash = {
+    enable = true;
+    enableVteIntegration = true;
+    initExtra = ''
+      # hook direnv
+      eval "$(direnv hook bash)"
+
+      # nix porcelain customizations
+      function nsd() {
+        case $# in
+          1)
+            nix show-derivation "$1" | jq -C . | bat
+            ;;
+          2)
+            nix show-derivation "$1" | jq -C .\""$1"\"."$2" | bat
+            ;;
+          *)
+            echo "nsd: don't know what to do with $@"
+            ;;
+        esac
+      }
+      export -f nsd
+
+    '';
   };
 
   programs.direnv = {
