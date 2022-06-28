@@ -10,6 +10,8 @@
     jetbrains.idea-community
     jetbrains.clion
 
+    nix-query-tree-viewer
+
     python39Packages.jsondiff
 
     silicon
