@@ -95,7 +95,22 @@
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
       '';
+      settings = {
+        "java.configuration.runtimes" = with pkgs; [
+          { name = "JDK8";
+          path = "${openjdk8}/lib/openjdk";
+          default = true;
+          }
+          { name = "JDK11";
+            path = "${openjdk11}/lib/openjdk";
+          }
+          { name = "JDK17";
+            path = "${openjdk17}/lib/openjdk";
+          }
+        ];
+      };
     };
+
     withNodeJs = true; # tmp https://github.com/nix-community/home-manager/pull/3048
 
     plugins = with pkgs.vimPlugins; [

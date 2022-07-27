@@ -14,3 +14,7 @@ nix shell nixpkgs#p7zip
 interop: nix shell nixpkgs#protobuf3_19 nixpkgs#maven
 nix shell nixpkgs#nixos-generators
 nix shell nixpkgs#niv
+
+
+webcamoid
+
