@@ -47,12 +47,15 @@
   # todo: how to incorporate modules?
   #nix.flakes.enable = true;
 
-  nix.nixPath = let path = toString ./.; in
-    [
-      "repl=${path}/repl.nix"
-      "nixpkgs=${inputs.nixpkgs}"
-      "/nix/var/nix/profiles/per-user/root/channels"
-    ];
+  nix = {
+    nixPath = let path = toString ./.; in
+      [
+        "repl=${path}/repl.nix"
+        "nixpkgs=${inputs.nixpkgs}"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
