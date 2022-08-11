@@ -123,4 +123,36 @@
       vim-nix
     ];
   };
+
+  programs.git = {
+    enable = true;
+
+    userName = "Nick Bathum";
+    userEmail = "nickbathum@gmail.com";
+
+    signing = {
+      key = "04197E06F68C4DA2F45DC12E6F47A049DC3446FB";
+      signByDefault = true;
+    };
+
+    difftastic = {
+      enable = true;
+      color = "always";
+    };
+
+    includes = [
+      {
+        condition = "gitdir:~/work/rjg/";
+        contents = {
+          user = {
+            email = "nick.bathum@rjginc.com";
+          };
+        };
+      }
+    ];
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
 }
