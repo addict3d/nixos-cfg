@@ -18,3 +18,5 @@ nix shell nixpkgs#niv
 
 webcamoid
 
+android-file-transfer
+dbeaver
