@@ -24,7 +24,7 @@
     openscad
 
     # calibre-web # fixme: lxml<4.8.0,>=3.8.0
-    # calibre # fixme: /nix/store/lwwi79jflxl8yns80axg1jwcbqp3w99j-python3.9-apsw-3.37.0-r1.drv
+    calibre # fixme: /nix/store/lwwi79jflxl8yns80axg1jwcbqp3w99j-python3.9-apsw-3.37.0-r1.drv
 
     freerdp
 

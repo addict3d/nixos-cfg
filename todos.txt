@@ -20,3 +20,4 @@ webcamoid
 
 android-file-transfer
 dbeaver
+Try kamoso

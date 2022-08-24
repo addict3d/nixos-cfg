@@ -6,9 +6,12 @@
     delta
 
     freemind
+    graphviz
 
-    jetbrains.idea-community
+    jetbrains.idea-ultimate
     jetbrains.clion
+    jetbrains.webstorm
+    jetbrains.datagrip
 
     nix-query-tree-viewer
 

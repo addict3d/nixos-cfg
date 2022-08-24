@@ -4,7 +4,7 @@
   # Also, direnvrc
   environment.systemPackages = with pkgs; [
     poetry
-    jetbrains.pycharm-community
+    jetbrains.pycharm-professional
   ];
 }
 
