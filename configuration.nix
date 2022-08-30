@@ -146,6 +146,10 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", DRIVER=="snd-usb-audio", ATTRS{idVendor}=="1bcf", ATTRS{idProduct}=="28c4", ATTR{authorized}="0"
+    '';
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
