@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
-with pkgs;
-
 {
   boot = {
-    kernelPackages = linuxPackages_5_18;
-    kernelModules = with linuxPackages_5_18; [ v4l2loopback ];
+    kernelPackages = pkgs.linuxPackages_5_18;
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   };
 
  # musnix.kernel = {
