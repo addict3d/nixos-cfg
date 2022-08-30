@@ -4,6 +4,11 @@
 
 { config, pkgs, inputs, ... }:
 
+let
+  base = "/etc/nixpkgs/channels";
+  nixpkgsPath = "${base}/nixpkgs";
+  nixpkgsUnstablePath = "${base}/nixpkgs-unstable";
+in
 {
   imports =
     [
@@ -51,11 +56,19 @@
     nixPath = let path = toString ./.; in
       [
         "repl=${path}/repl.nix"
-        "nixpkgs=${inputs.nixpkgs}"
+        "nixpkgs=${nixpkgsPath}" # currently 22.05
+        "nixpkgs-unstable=${nixpkgsUnstablePath}"
         "/nix/var/nix/profiles/per-user/root/channels"
       ];
     registry.nixpkgs.flake = inputs.nixpkgs;
+    registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
   };
+
+  # inspired by https://github.com/NobbZ/nixos-config/blob/main/nixos/modules/flake.nix
+  systemd.tmpfiles.rules = [
+    "L+ ${nixpkgsPath}     - - - - ${inputs.nixpkgs}"
+    "L+ ${nixpkgsUnstablePath} - - - - ${inputs.nixpkgs-unstable}"
+  ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
