@@ -10,6 +10,7 @@
     entangle
     #gnome.cheese
     plasma5Packages.kamoso
+    v4l-utils
     webcamoid
     wxcam
   ];

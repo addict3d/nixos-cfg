@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 
+with pkgs;
+
 {
-  boot.kernelPackages = pkgs.linuxPackages_5_15;
+  boot = {
+    kernelPackages = linuxPackages_5_18;
+    kernelModules = [ v4l2loopback ];
+  };
 
  # musnix.kernel = {
  #   optimize = true;
