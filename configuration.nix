@@ -17,6 +17,7 @@ in
 ./archival.nix
 ./avahi.nix
 ./cachix.nix
+./camera.nix
 ./console.nix
 ./desktop-pkgs.nix
 ./dev-tools.nix
