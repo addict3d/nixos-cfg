@@ -13,6 +13,9 @@
     v4l-utils
     webcamoid
     wxcam
+    # uvccapture
+    # tiscamera
+    # guvcview
   ];
 }
 
