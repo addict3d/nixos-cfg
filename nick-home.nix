@@ -96,6 +96,7 @@
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
       '';
       settings = {
+        "java.trace.server"= "verbose";
         "java.configuration.runtimes" = with pkgs; [
           { name = "JDK8";
           path = "${openjdk8}/lib/openjdk";

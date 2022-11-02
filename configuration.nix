@@ -15,7 +15,6 @@ in
 # {template to fill this in automatically on changes }
 
 ./archival.nix
-./avahi.nix
 ./cachix.nix
 ./calibre.nix
 ./camera.nix
