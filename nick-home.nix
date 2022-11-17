@@ -146,7 +146,7 @@
         condition = "gitdir:~/work/rjg/";
         contents = {
           user = {
-            email = "nick.bathum@rjginc.com";
+            email = "nickbathum@gmail.com";
           };
         };
       }
