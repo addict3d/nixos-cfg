@@ -2,7 +2,7 @@
 
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_5_18;
+    kernelPackages = pkgs.linuxPackages_6_0;
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   };
 
