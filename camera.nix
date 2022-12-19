@@ -12,7 +12,6 @@
     plasma5Packages.kamoso
     v4l-utils
     webcamoid
-    wxcam
     # uvccapture
     # tiscamera
     # guvcview

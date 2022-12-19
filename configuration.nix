@@ -33,6 +33,7 @@ in
 ./sound.nix
 ./sysadmin-tools.nix
 ./text-editing.nix
+./tmp.nix
 ./u2f.nix
           ];
 
@@ -95,8 +96,6 @@ in
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   #services.xserver.videoDrivers = [ "mode-setting" ];
-  services.xserver.useGlamor = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "us";
