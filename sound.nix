@@ -6,16 +6,16 @@
   hardware.pulseaudio.enable = true;
 
 
-  musnix = {
-    enable = true;
-
-    alsaSeq.enable = true;
-
-
+#  musnix = {
+#    enable = true;
+#
+#    alsaSeq.enable = true;
+#
+#
     # (lspci | grep -i audio)
-    soundcardPciId = "00:1b.0";
-
-  };
+#    soundcardPciId = "00:1b.0";
+#
+#  };
 
 
   # following in https://nixos.wiki/wiki/JACK

@@ -76,7 +76,7 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp7s0.useDHCP = true;
+  #networking.interfaces.enp7s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -94,7 +94,7 @@ in
   services.xserver.desktopManager.plasma5.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   #services.xserver.videoDrivers = [ "mode-setting" ];
 
   # Configure keymap in X11

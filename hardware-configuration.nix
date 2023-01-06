@@ -9,20 +9,25 @@ in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  hardware.cpu.intel.updateMicrocode = true;
+  networking.interfaces.enp11s0.useDHCP = lib.mkDefault true;
+
+  hardware.enableRedistributableFirmware = true;
+
+  hardware.cpu.amd.updateMicrocode = true;
+  #hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.initrd.availableKernelModules = [
-    "ehci_pci"
+#    "ehci_pci"
     "ahci"
-    "firewire_ohci"
+#    "firewire_ohci"
     "xhci_pci"
     "usb_storage"
     "usbhid"
     "sd_mod"
   ];
 
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   services.fstrim.enable = true;
@@ -41,14 +46,14 @@ in
     "/mnt/bits" = {
       label = "bits";
       fsType = "ntfs3";
-      options = [ "noatime" "ro" ] ++ userGroupList;
+      options = [ "noauto" "noatime" "ro" ] ++ userGroupList;
       noCheck = true;
     };
 
     "/mnt/gold" = {
       label = "gold";
       fsType = "ntfs3";
-      options = [ "noatime" ] ++ userGroupList;
+      options = [ "noauto" "noatime" ] ++ userGroupList;
       noCheck = true;
     };
   };
