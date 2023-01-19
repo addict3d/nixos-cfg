@@ -4,12 +4,8 @@
   systemd.packages = with pkgs; [
     psi-notify  # manually configure for now
   ];
-    
-  environment.systemPackages = with pkgs; [
-    gwe
-    nvfancontrol
-    nvtop
 
+  environment.systemPackages = with pkgs; [
     maim
     vlc
     dia

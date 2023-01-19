@@ -12,7 +12,7 @@
     musnix.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: rec {
