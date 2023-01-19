@@ -36,6 +36,7 @@
     google-chrome-beta
 
     winbox
+    xsel
     zoom-us
   ];
 }
