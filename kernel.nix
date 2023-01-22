@@ -3,7 +3,8 @@
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_6_0;
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    kernelModules = [ "it87" ];
+    extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
   };
 
  # musnix.kernel = {

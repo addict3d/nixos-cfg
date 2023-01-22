@@ -49,7 +49,7 @@ in
   # Set your time zone.
   time.timeZone = "America/Detroit";
 
-  nixpkgs.overlays = [ (import ./weechat.nix) ];
+  #nixpkgs.overlays = [ (import ./it87.nix) (import ./weechat.nix) ];
 
   # todo: how to incorporate modules?
   #nix.flakes.enable = true;
