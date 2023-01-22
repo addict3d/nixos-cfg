@@ -32,7 +32,7 @@ in
   ];
 
 #  nixpkgs.config.packageOverrides = pkgs: pkgs.lib.recursiveUpdate pkgs {
-#    linuxKernel.kernels.linux_5_10 = pkgs.linuxKernel.kernels.linux_5_10.override {
+#    linuxKernel.kernels.linux_6_0 = pkgs.linuxKernel.kernels.linux_6_0.override {
 #      extraConfig = ''
 #        KGDB y
 #      '';
@@ -43,6 +43,7 @@ in
     kernelPackages = my-linuxPackages;
     kernelModules = [ "it87" ];
     extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
+    kernelParams = [ "acpi_enforce_resources=lax" ];
   };
 
  # musnix.kernel = {
