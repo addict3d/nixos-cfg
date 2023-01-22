@@ -15,14 +15,10 @@
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs: rec {
-    # nixosModules = import ./nixos/modules;
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-
-    nixosConfigurations = {
-      Yokan = inputs.nixpkgs.lib.nixosSystem 
-      let
+  outputs = inputs: 
+let
         it87-overlay = self: super: {
+          # derp. namespaced under linuxPackages
           it87 = super.it87.overrideAttrs (old: {
             src = super.fetchFromGitHub {
               owner = "frankcrawford";
@@ -35,6 +31,14 @@
         };
       in
 
+
+  rec {
+    # nixosModules = import ./nixos/modules;
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
+    nixosConfigurations = {
+      Yokan = inputs.nixpkgs.lib.nixosSystem 
+      
       {
         system = "x86_64-linux";
         modules = [
