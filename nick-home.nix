@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./nick-work.nix ];
+
   home = {
     stateVersion = "22.05";
 
@@ -81,32 +83,40 @@
       # See https://github.com/nix-community/home-manager/issues/2966
       package = pkgs.vimUtils.buildVimPluginFrom2Nix {
         pname = "coc.nvim";
-        version = "2022-06-14";
+        version = "0.0.82"; # 2022-07-31
         src = pkgs.fetchFromGitHub {
           owner = "neoclide";
           repo = "coc.nvim";
-          rev = "87e5dd692ec8ed7be25b15449fd0ab15a48bfb30";
-          sha256 = "sha256-bsrCvgQqIA4jD62PIcLwYdcBM+YLLKLI/x2H5c/bR50=";
+          rev = "1d3c525e2d6af0c07ed19fa7a5016ffc6a9e8421";
+          sha256 = "sha256-TIkx/Sp9jnRd+3jokab91S5Mb3JV8yyz3wy7+UAd0A0=";
         };
         meta.homepage = "https://github.com/neoclide/coc.nvim/";
       };
       pluginConfig = ''
-        " nav comp list with tab
-        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        function! s:check_back_space() abort
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~ '\s'
+        endfunction
+
+        " Insert <tab> when previous text is space, refresh completion if not.
+        inoremap <silent><expr> <TAB>
+              \ coc#pum#visible() ? coc#pum#next(1):
+              \ <SID>check_back_space() ? "\<Tab>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
       '';
       settings = {
         "java.trace.server"= "verbose";
         "java.configuration.runtimes" = with pkgs; [
           { name = "JDK8";
           path = "${openjdk8}/lib/openjdk";
-          default = true;
           }
           { name = "JDK11";
             path = "${openjdk11}/lib/openjdk";
           }
           { name = "JDK17";
-            path = "${openjdk17}/lib/openjdk";
+          path = "${openjdk17}/lib/openjdk";
+          default = true;
           }
         ];
       };
@@ -156,4 +166,23 @@
       init.defaultBranch = "main";
     };
   };
+
+  programs.ssh = {
+    enable = true;
+
+    matchBlocks = {
+      "bitbucket.org" = {
+        identityFile = "~/.ssh/rsa_ncataria";
+      };
+
+      "github.com" = {
+        identityFile = "~/.ssh/rsa_ncataria";
+      };
+
+      "gitlab.com" = {
+        identityFile = "~/.ssh/rsa_ncataria";
+      };
+    };
+  };
+
 }
