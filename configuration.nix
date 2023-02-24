@@ -122,6 +122,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    (inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.d2)
     gitFull
     git-extras
     pass
