@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    nix-output-monitor
     jq
     delta
 
