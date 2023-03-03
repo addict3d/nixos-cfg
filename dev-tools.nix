@@ -6,6 +6,8 @@
     jq
     delta
 
+    cowsay
+
     freemind
     graphviz
 

@@ -113,7 +113,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
-    extraGroups = [ "audio" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "audio" "corectrl" "wheel" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "$6$7/k2tBTCG$RcUdZo8GNe6u69fQX7bk9CglHkQWzZgT3ChfQiMVYI3agJLHbg8uR4qLlX1PrJr61SA4wweRtXctSyItD4ITP/";
     uid = 1000;
     description = "Nick FooBar";

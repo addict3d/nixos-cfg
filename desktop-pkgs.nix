@@ -5,6 +5,8 @@
     psi-notify  # manually configure for now
   ];
 
+  programs.corectrl.enable = true;
+
   environment.systemPackages = with pkgs; [
     maim
     vlc
