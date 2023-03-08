@@ -21,6 +21,7 @@ in
 ./console.nix
 ./desktop-pkgs.nix
 ./dev-tools.nix
+./docker.nix
 ./hardware-configuration.nix
 ./hw-and-disk-util.nix
 ./kernel.nix
