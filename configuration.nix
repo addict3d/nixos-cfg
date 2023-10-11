@@ -30,6 +30,7 @@ in
 ./python.nix
 ./rdp.nix
 ./search-files.nix
+./tmptmptmp.nix
 ./social.nix
 ./sound.nix
 ./sysadmin-tools.nix

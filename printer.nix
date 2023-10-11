@@ -9,6 +9,8 @@ in
 {
   environment.systemPackages = [ myhplip ];
 
+  services.avahi.enable = true;
+
   services.printing = {
     enable = true;
     drivers = [ myhplip ];
