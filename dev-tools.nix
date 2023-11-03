@@ -11,6 +11,8 @@
     freemind
     graphviz
 
+    pkgs.openjdk17
+    (pkgs.gradle_7.override { java = openjdk17; javaToolchains = [ openjdk8 openjdk11 openjdk17 ]; })
     jetbrains.idea-ultimate
     jetbrains.clion
     jetbrains.webstorm

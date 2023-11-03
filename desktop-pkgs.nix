@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   systemd.packages = with pkgs; [
@@ -25,6 +25,7 @@
 
     freerdp
 
+    inputs.nixpkgs-unstable.legacyPackages.x86_64-linux.signal-desktop
     tigervnc
 
     claws-mail
