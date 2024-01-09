@@ -36,6 +36,7 @@ in
 ./sysadmin-tools.nix
 ./text-editing.nix
 ./tmp.nix
+#./tmp-work-ops.nix
 ./u2f.nix
           ];
 
