@@ -20,6 +20,7 @@ in
 ./camera.nix
 ./console.nix
 ./desktop-pkgs.nix
+./dev-java.nix
 ./dev-tools.nix
 ./docker.nix
 ./hardware-configuration.nix
@@ -134,6 +135,7 @@ in
     bat
     kitty
     nm-tray
+    (inputs.home-manager.packages.x86_64-linux.default)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
