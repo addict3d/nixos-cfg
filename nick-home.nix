@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [ ./nick-work.nix ];
@@ -74,7 +74,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     viAlias = true;
     vimAlias = true;
 
@@ -83,12 +83,12 @@
       # See https://github.com/nix-community/home-manager/issues/2966
       package = pkgs.vimUtils.buildVimPluginFrom2Nix {
         pname = "coc.nvim";
-        version = "0.0.82"; # 2022-07-31
+        version = "0.0.82"; # 2024-07-14
         src = pkgs.fetchFromGitHub {
           owner = "neoclide";
           repo = "coc.nvim";
-          rev = "1d3c525e2d6af0c07ed19fa7a5016ffc6a9e8421";
-          sha256 = "sha256-TIkx/Sp9jnRd+3jokab91S5Mb3JV8yyz3wy7+UAd0A0=";
+          rev = "ebe2a2058ed85d3884f8010a53bac25edbf9675c";
+          sha256 = "sha256-vXZEzWxU7uNkRnBoB9OUn3if7jzRbvdJxWfhf8QPans=";
         };
         meta.homepage = "https://github.com/neoclide/coc.nvim/";
       };

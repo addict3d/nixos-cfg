@@ -2,17 +2,17 @@
   description = "Yokan [desktop] NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    musnix.url = "github:musnix/musnix";
-    musnix.inputs.nixpkgs.follows = "nixpkgs";
+    #musnix.url = "github:musnix/musnix";
+    #musnix.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    #neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: 
@@ -24,17 +24,18 @@
     nixosConfigurations = {
       Yokan = inputs.nixpkgs.lib.nixosSystem 
       
-      {
+      rec {
         system = "x86_64-linux";
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ]; })
-          inputs.musnix.nixosModules.musnix
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ]; })
+          #inputs.musnix.nixosModules.musnix
           ./configuration.nix ## Configuration file from regular /etc/nixos config
 
           # TODO: Clean it up!
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
+              extraSpecialArgs = specialArgs;
               backupFileExtension = "bak";
               useGlobalPkgs = true; # see
               #https://github.com/nix-community/home-manager/issues/1519

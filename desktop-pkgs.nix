@@ -32,7 +32,6 @@
     krdc
 
     google-chrome
-    google-chrome-beta
 
     winbox
     xsel
