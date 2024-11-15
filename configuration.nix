@@ -26,6 +26,7 @@ in
 ./hardware-configuration.nix
 ./hw-and-disk-util.nix
 ./kernel.nix
+./libvirtd.nix
 ./nix.nix
 ./printer.nix
 ./python.nix
