@@ -14,6 +14,7 @@ in
     [
 # {template to fill this in automatically on changes }
 
+./android.nix
 ./archival.nix
 ./cachix.nix
 ./calibre.nix
