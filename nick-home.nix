@@ -79,7 +79,7 @@
     vimAlias = true;
 
     coc = {
-      enable = true;
+      enable = false;
       # See https://github.com/nix-community/home-manager/issues/2966
       package = pkgs.vimUtils.buildVimPluginFrom2Nix {
         pname = "coc.nvim";

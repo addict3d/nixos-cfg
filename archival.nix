@@ -2,16 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-
-
-# compression                                                      
     bzip2                                                              
-      gzip                                                               
-      pxz                                                                
-      lzma                                                               
-      unzip                                                              
-      zip                                                                
-
+    gzip                                                               
+    pxz                                                                
+    xz                                                               
+    unzip                                                              
+    zip                                                                
   ];
 }
 

@@ -28,6 +28,7 @@ in
 ./hw-and-disk-util.nix
 ./kernel.nix
 ./libvirtd.nix
+./minecraft.nix
 ./nix.nix
 ./printer.nix
 ./python.nix
@@ -104,7 +105,7 @@ in
   #services.xserver.videoDrivers = [ "mode-setting" ];
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
+  services.xserver.xkb.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable sound.
