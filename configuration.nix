@@ -49,9 +49,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "Yokan"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  #
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Detroit";
