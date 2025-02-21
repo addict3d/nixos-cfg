@@ -167,6 +167,7 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      core.commentChar = ";";
     };
   };
 
