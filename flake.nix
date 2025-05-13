@@ -12,7 +12,7 @@
     #musnix.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs: 
@@ -27,7 +27,6 @@
       rec {
         system = "x86_64-linux";
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ]; })
           #inputs.musnix.nixosModules.musnix
           ./configuration.nix ## Configuration file from regular /etc/nixos config
 

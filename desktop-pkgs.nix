@@ -5,6 +5,23 @@
     psi-notify  # manually configure for now
   ];
 
+  programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    viAlias = true;
+    vimAlias = true;
+
+    configure = {
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        start = [
+          vim-plugin-AnsiEsc
+          vim-nix
+        ];
+      };
+    };
+  };
+
+
   programs.corectrl.enable = true;
 
   environment.systemPackages = with pkgs; [

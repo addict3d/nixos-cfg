@@ -8,3 +8,8 @@ NixOS expressions for my own personal systems.
 * P(evaluation failure) = 0.5
 * subject to arbitrary changes
 * rewriting history _will occur_
+
+
+## Usage
+
+- `nix flake update nixpkgs` -- update a single flake input by name

@@ -20,6 +20,7 @@
     usbutils                                                           
     hdparm                                                             
     ethtool
+    lshw-gui
   ];
 }
 
