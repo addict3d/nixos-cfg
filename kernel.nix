@@ -44,6 +44,7 @@ in
     kernelModules = [ "it87" ];
     extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
     kernelParams = [ "acpi_enforce_resources=lax" ];
+    #kernelParams = [ "acpi_enforce_resources=lax" "vfio-pci.ids=1002:67df,1002:aaf0"];
   };
 
  # musnix.kernel = {

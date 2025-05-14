@@ -26,7 +26,7 @@ in
     "sd_mod"
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "vfio-pci" "amdgpu" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 

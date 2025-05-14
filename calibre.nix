@@ -2,7 +2,7 @@
 
 {
   services.calibre-web = {
-    enable = true;
+    enable = false;
     options = {
       calibreLibrary = "/mnt/gold/calibre";
       enableBookUploading = true;

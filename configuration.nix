@@ -48,6 +48,11 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # for gaming...
+  #boot.extraModprobeConfig = ''
+  #  options vfio-pci ids=1002:67df,1002:aaf0
+  #'';
+
   networking.hostName = "Yokan"; # Define your hostname.
 
   # Set your time zone.
@@ -94,7 +99,48 @@ in
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    #serverFlagsSection = ''
+    #  Option "AutoAddGPU" "false"
+    #  Option "AutoEnableGPU" "false"
+    #'';
+    # Completely replace the builtin xserver.conf
+    #config = pkgs.lib.mkForce ''
+    #  Section "ServerFlags"
+    #      Option "DontZap"
+    #      Option "AllowMouseOpenFail" "on"
+    #      Option "AutoAddGPU"    "false"
+    #      Option "AutoEnableGPU" "false"
+    #  EndSection
+#
+#      Section "Monitor"
+#          Identifier "Monitor0"
+#      EndSection
+#
+#      Section "Device"
+#          Identifier "iGPU"
+#          Driver     "amdgpu"
+#          BusID      "PCI:15:0:0"
+#          Option     "PrimaryGPU" "true"
+#      EndSection
+#
+#      Section "Screen"
+#          Identifier "Screen0"
+#          Device     "iGPU"
+#          Monitor    "Monitor0"
+#          DefaultDepth 24
+#        SubSection "Display"
+#          Depth     24
+#        EndSubSection
+#      EndSection
+#
+#      Section "ServerLayout"
+#          Identifier "Layout0"
+#          Screen     0 "Screen0" 0 0
+#      EndSection
+#    '';
+  };
   services.xserver.desktopManager.plasma5.enable = true;
 
   nixpkgs.config.allowUnfree = true;
