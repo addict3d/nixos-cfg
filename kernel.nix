@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
-  my-linuxPackages = pkgs.linuxPackages_6_1;
+  my-linuxPackages = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.linuxPackages_6_12;
 #  my-it87 = my-linuxPackages.it87.overrideAttrs (old: {
 #    src = pkgs.fetchFromGitHub {
 #      owner = "frankcrawford";
@@ -41,8 +41,10 @@ in
 
   boot = {
     kernelPackages = my-linuxPackages;
-    kernelModules = [ "it87" ];
-    extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
+    #kernelModules = [ "it87" ];
+    kernelModules = [ ];
+    #extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     kernelParams = [ "acpi_enforce_resources=lax" ];
     #kernelParams = [ "acpi_enforce_resources=lax" "vfio-pci.ids=1002:67df,1002:aaf0"];
   };
