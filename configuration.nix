@@ -58,8 +58,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Detroit";
 
-  #nixpkgs.overlays = [ (import ./it87.nix) (import ./weechat.nix) ];
-
   # todo: how to incorporate modules?
   #nix.flakes.enable = true;
 
@@ -178,6 +176,7 @@ in
     pass
     wget
     firefox
+    ghostty
     bat
     kitty
     nm-tray

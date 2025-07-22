@@ -1,57 +1,45 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
-  my-linuxPackages = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.linuxPackages_6_12;
-#  my-it87 = my-linuxPackages.it87.overrideAttrs (old: {
-#    src = pkgs.fetchFromGitHub {
-#      owner = "frankcrawford";
-#      repo = "it87";
-#      # Jan 4th, 2023, Updated to match naming convention used in-tree version
-#      rev = "3e5333ad0b85216a81f33692875f33456e8064c9";
-#      sha256 = "sha256-wVhs//iwZUUGRTk1DpV/SnA7NZ7cFyYbsUbtazlxb6Q=";
-#    };
-#  });
-in
-
-
-{
-  nixpkgs.overlays = [
-    (self: super: {
-      linuxPackages_6_1 = super.linuxPackages_6_1.extend (lpself: lpsuper: {
-        it87 = super.linuxPackages_6_1.it87.overrideAttrs (oldAttrs: {
-          src = pkgs.fetchFromGitHub {
-            owner = "frankcrawford";
-            repo = "it87";
-            # Jan 4th, 2023, Updated to match naming convention used in-tree version
-            rev = "74e5fba9a888a72b5d7cde04552f3bb4c51c318e";
-            sha256 = "sha256-AmEKAC41IDfaEVn54jBYDZkIY7NkpWxUVdK7GdUG1Tk=";
-          };
-        });
-      });
-    })
-  ];
-
-#  nixpkgs.config.packageOverrides = pkgs: pkgs.lib.recursiveUpdate pkgs {
-#    linuxKernel.kernels.linux_6_0 = pkgs.linuxKernel.kernels.linux_6_0.override {
-#      extraConfig = ''
-#        KGDB y
-#      '';
-#    };
-#  };
-
-  boot = {
-    kernelPackages = my-linuxPackages;
-    #kernelModules = [ "it87" ];
-    kernelModules = [ ];
-    #extraModulePackages = with config.boot.kernelPackages; [ it87 v4l2loopback ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-    kernelParams = [ "acpi_enforce_resources=lax" ];
-    #kernelParams = [ "acpi_enforce_resources=lax" "vfio-pci.ids=1002:67df,1002:aaf0"];
+  nixpkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    overlays = [
+      (self: super: {
+        linuxPackages_6_12 = super.linuxPackages_6_12.extend (
+          lpself: lpsuper: {
+            it87 = lpsuper.it87.overrideAttrs (oldAttrs: {
+              src = pkgs.fetchFromGitHub {
+                owner = "frankcrawford";
+                repo = "it87";
+                #  Thu Mar 27, 2025
+                rev = "4bff981a91bf9209b52e30ee24ca39df163a8bcd";
+                sha256 = "sha256-hjNph67pUaeL4kw3cacSz/sAvWMcoN2R7puiHWmRObM=";
+              };
+            });
+          }
+        );
+      })
+    ];
   };
 
- # musnix.kernel = {
- #   optimize = true;
- #   realtime = true;
- #   packages = pkgs.linuxPackages_latest_rt;
- # };
+  my-linuxPackages = nixpkgs-unstable.linuxPackages_6_12;
+in
+{
+  boot = {
+    kernelPackages = my-linuxPackages;
+    kernelModules = [
+      "it87"
+      "v4l2loopback"
+    ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      it87
+      v4l2loopback
+    ];
+    kernelParams = [ "acpi_enforce_resources=lax" ];
+  };
 }
