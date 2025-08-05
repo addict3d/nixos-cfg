@@ -33,6 +33,7 @@ in
 ./printer.nix
 ./python.nix
 ./rdp.nix
+./rgb.nix
 ./search-files.nix
 ./tmptmptmp.nix
 ./social.nix
