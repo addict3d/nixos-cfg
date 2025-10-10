@@ -24,6 +24,7 @@ in
 ./dev-java.nix
 ./dev-tools.nix
 ./docker.nix
+./fonts.nix
 ./hardware-configuration.nix
 ./hw-and-disk-util.nix
 ./kernel.nix
@@ -31,7 +32,7 @@ in
 ./minecraft.nix
 ./nix.nix
 ./printer.nix
-./python.nix
+#./python.nix
 ./rdp.nix
 ./rgb.nix
 ./search-files.nix
@@ -48,6 +49,7 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   # for gaming...
   #boot.extraModprobeConfig = ''
@@ -140,7 +142,8 @@ in
 #      EndSection
 #    '';
   };
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  system.rebuild.enableNg = true;
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "amdgpu" ];

@@ -8,6 +8,7 @@
         "root"
         "@wheel"
       ];
+      download-buffer-size = 268435456; # 256 MiB
     };
     #package = pkgs.nixVersions.latest;
     extraOptions = ''

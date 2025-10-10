@@ -20,7 +20,7 @@
 
     nix-query-tree-viewer
 
-    python39Packages.jsondiff
+    python3Packages.jsondiff
 
     silicon
 

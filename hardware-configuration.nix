@@ -18,7 +18,6 @@ in
 
   boot.initrd.availableKernelModules = [
 #    "ehci_pci"
-    "ahci"
 #    "firewire_ohci"
     "xhci_pci"
     "usb_storage"

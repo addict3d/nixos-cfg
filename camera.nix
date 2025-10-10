@@ -9,7 +9,7 @@
 
     entangle
     #gnome.cheese
-    plasma5Packages.kamoso
+    #plasma5Packages.kamoso
     v4l-utils
     webcamoid
     # uvccapture

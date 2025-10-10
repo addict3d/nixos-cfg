@@ -46,12 +46,12 @@
     tigervnc
 
     claws-mail
-    krdc
+    #krdc
 
     google-chrome
 
     winbox
-    xsel
+    wl-clipboard
     zoom-us
   ];
 }
