@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   base = "/etc/nixpkgs/channels";
@@ -10,41 +15,40 @@ let
   nixpkgsUnstablePath = "${base}/nixpkgs-unstable";
 in
 {
-  imports =
-    [
-# {template to fill this in automatically on changes }
+  imports = [
+    # {template to fill this in automatically on changes }
 
-./android.nix
-./archival.nix
-./cachix.nix
-./calibre.nix
-./camera.nix
-./console.nix
-./desktop-pkgs.nix
-./dev-java.nix
-./dev-tools.nix
-./docker.nix
-./fonts.nix
-./hardware-configuration.nix
-./hw-and-disk-util.nix
-./kernel.nix
-./libvirtd.nix
-./minecraft.nix
-./nix.nix
-./printer.nix
-#./python.nix
-./rdp.nix
-./rgb.nix
-./search-files.nix
-./tmptmptmp.nix
-./social.nix
-./sound.nix
-./sysadmin-tools.nix
-./text-editing.nix
-./tmp.nix
-#./tmp-work-ops.nix
-./u2f.nix
-          ];
+    ./android.nix
+    ./archival.nix
+    ./cachix.nix
+    ./calibre.nix
+    ./camera.nix
+    ./console.nix
+    ./desktop-pkgs.nix
+    ./dev-java.nix
+    ./dev-tools.nix
+    ./docker.nix
+    ./fonts.nix
+    ./hardware-configuration.nix
+    ./hw-and-disk-util.nix
+    ./kernel.nix
+    ./libvirtd.nix
+    ./minecraft.nix
+    ./nix.nix
+    ./printer.nix
+    #./python.nix
+    ./rdp.nix
+    ./rgb.nix
+    ./search-files.nix
+    ./tmptmptmp.nix
+    ./social.nix
+    ./sound.nix
+    ./sysadmin-tools.nix
+    ./text-editing.nix
+    ./tmp.nix
+    #./tmp-work-ops.nix
+    ./u2f.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -65,7 +69,10 @@ in
   #nix.flakes.enable = true;
 
   nix = {
-    nixPath = let path = toString ./.; in
+    nixPath =
+      let
+        path = toString ./.;
+      in
       [
         "repl=${path}/repl.nix"
         "nixpkgs=${nixpkgsPath}" # currently 22.05
@@ -114,33 +121,33 @@ in
     #      Option "AutoAddGPU"    "false"
     #      Option "AutoEnableGPU" "false"
     #  EndSection
-#
-#      Section "Monitor"
-#          Identifier "Monitor0"
-#      EndSection
-#
-#      Section "Device"
-#          Identifier "iGPU"
-#          Driver     "amdgpu"
-#          BusID      "PCI:15:0:0"
-#          Option     "PrimaryGPU" "true"
-#      EndSection
-#
-#      Section "Screen"
-#          Identifier "Screen0"
-#          Device     "iGPU"
-#          Monitor    "Monitor0"
-#          DefaultDepth 24
-#        SubSection "Display"
-#          Depth     24
-#        EndSubSection
-#      EndSection
-#
-#      Section "ServerLayout"
-#          Identifier "Layout0"
-#          Screen     0 "Screen0" 0 0
-#      EndSection
-#    '';
+    #
+    #      Section "Monitor"
+    #          Identifier "Monitor0"
+    #      EndSection
+    #
+    #      Section "Device"
+    #          Identifier "iGPU"
+    #          Driver     "amdgpu"
+    #          BusID      "PCI:15:0:0"
+    #          Option     "PrimaryGPU" "true"
+    #      EndSection
+    #
+    #      Section "Screen"
+    #          Identifier "Screen0"
+    #          Device     "iGPU"
+    #          Monitor    "Monitor0"
+    #          DefaultDepth 24
+    #        SubSection "Display"
+    #          Depth     24
+    #        EndSubSection
+    #      EndSection
+    #
+    #      Section "ServerLayout"
+    #          Identifier "Layout0"
+    #          Screen     0 "Screen0" 0 0
+    #      EndSection
+    #    '';
   };
   services.desktopManager.plasma6.enable = true;
   system.rebuild.enableNg = true;
@@ -165,7 +172,11 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
-    extraGroups = [ "audio" "corectrl" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "audio"
+      "corectrl"
+      "wheel"
+    ]; # Enable ‘sudo’ for the user.
     hashedPassword = "$6$7/k2tBTCG$RcUdZo8GNe6u69fQX7bk9CglHkQWzZgT3ChfQiMVYI3agJLHbg8uR4qLlX1PrJr61SA4wweRtXctSyItD4ITP/";
     uid = 1000;
     description = "Nick FooBar";
@@ -201,10 +212,9 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", DRIVER=="snd-usb-audio", ATTRS{idVendor}=="1bcf", ATTRS{idProduct}=="28c4", ATTR{authorized}="0"
-    '';
+  '';
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -220,4 +230,3 @@ in
   system.stateVersion = "21.05"; # Did you read the comment?
 
 }
-

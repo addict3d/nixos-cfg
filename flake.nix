@@ -17,42 +17,44 @@
     # neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = inputs: 
- 
-  rec {
-    # nixosModules = import ./nixos/modules;
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+  outputs =
+    inputs:
 
-    nixosConfigurations = {
-      Yokan = inputs.nixpkgs.lib.nixosSystem 
-      
-      rec {
-        system = "x86_64-linux";
-        modules = [
-          #inputs.musnix.nixosModules.musnix
-          ./configuration.nix ## Configuration file from regular /etc/nixos config
+    rec {
+      # nixosModules = import ./nixos/modules;
+      formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
 
-          # TODO: Clean it up!
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = specialArgs;
-              backupFileExtension = "bak";
-              useGlobalPkgs = true; # see
-              #https://github.com/nix-community/home-manager/issues/1519
-              #https://github.com/divnix/devos/issues/30
-              useUserPackages = true;
-              users.nick = import ./nick-home.nix;
+      nixosConfigurations = {
+        Yokan =
+          inputs.nixpkgs.lib.nixosSystem
+
+            rec {
+              system = "x86_64-linux";
+              modules = [
+                #inputs.musnix.nixosModules.musnix
+                ./configuration.nix # Configuration file from regular /etc/nixos config
+
+                # TODO: Clean it up!
+                inputs.home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    extraSpecialArgs = specialArgs;
+                    backupFileExtension = "bak";
+                    useGlobalPkgs = true; # see
+                    #https://github.com/nix-community/home-manager/issues/1519
+                    #https://github.com/divnix/devos/issues/30
+                    useUserPackages = true;
+                    users.nick = import ./nick-home.nix;
+                  };
+                  imports = [
+                    ./home.nix
+                  ];
+                }
+
+                inputs.determinate.nixosModules.default
+              ];
+              specialArgs = { inherit inputs; }; # Inherit inputs to configuration.nix so you can call inputs.inputname
             };
-            imports = [
-              ./home.nix
-            ];
-          }
-
-          inputs.determinate.nixosModules.default
-        ];
-        specialArgs = { inherit inputs; }; ## Inherit inputs to configuration.nix so you can call inputs.inputname
       };
     };
-  };
 }
