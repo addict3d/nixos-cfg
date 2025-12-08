@@ -29,6 +29,7 @@ in
     ./dev-tools.nix
     ./docker.nix
     ./fonts.nix
+    ./gaming.nix
     ./hardware-configuration.nix
     ./hw-and-disk-util.nix
     ./kernel.nix
@@ -150,6 +151,9 @@ in
     #    '';
   };
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  security.pam.services.sddm.kwallet.enable = true;
   system.rebuild.enableNg = true;
 
   nixpkgs.config.allowUnfree = true;
