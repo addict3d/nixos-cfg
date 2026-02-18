@@ -198,7 +198,6 @@ in
     ghostty
     bat
     kitty
-    nm-tray
     (inputs.home-manager.packages.x86_64-linux.default)
   ];
 
