@@ -97,11 +97,6 @@
       signByDefault = true;
     };
 
-    difftastic = {
-      enable = true;
-      color = "always";
-    };
-
     includes = [
       {
         condition = "gitdir:~/work/rjg/";
@@ -112,13 +107,28 @@
         };
       }
     ];
-
-    extraConfig = {
-    };
   };
+
+
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+    color = "always";
+  };
+
+  # todo: try jujutsu
+  # programs.difftastic.jujutsu.enable
+  # https://github.com/nix-community/home-manager/blob/master/modules/programs/jujutsu.nix
+
 
   programs.ssh = {
     enable = true;
+
+    enableDefaultConfig = false;
+
+    extraConfig = {
+      ExitOnForwardFailure = "yes";
+    };
 
     matchBlocks = {
       "bitbucket.org" = {
@@ -131,6 +141,20 @@
 
       "gitlab.com" = {
         identityFile = "~/.ssh/rsa_ncataria";
+      };
+
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts"; 
+
+        controlMaster = "auto";
+        controlPath = "~/.ssh/control/cm-%r-at-%h_%p";
+        controlPersist = "10m";
       };
     };
   };
