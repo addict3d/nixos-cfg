@@ -77,8 +77,20 @@
 
     lfs.enable = true;
 
-    userName = "Nick Bathum";
-    userEmail = "nickbathum@gmail.com";
+    settings = {
+      user = {
+        name = "Nick Bathum";
+        email = "nickbathum@gmail.com";
+      };
+
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      
+      # input markdown directly
+      core.commentChar = ";";
+
+      merge.conflictStyle = "zdiff3";
+    };
 
     signing = {
       key = "04197E06F68C4DA2F45DC12E6F47A049DC3446FB";
@@ -102,8 +114,6 @@
     ];
 
     extraConfig = {
-      init.defaultBranch = "main";
-      core.commentChar = ";";
     };
   };
 
