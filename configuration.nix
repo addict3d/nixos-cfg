@@ -37,7 +37,6 @@ in
     ./minecraft.nix
     ./nix.nix
     ./printer.nix
-    #./python.nix
     ./rdp.nix
     ./rgb.nix
     ./search-files.nix
