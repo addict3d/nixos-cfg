@@ -113,7 +113,9 @@
   programs.difftastic = {
     enable = true;
     git.enable = true;
-    color = "always";
+    options = {
+      color = "always";
+    };
   };
 
   # todo: try jujutsu
@@ -126,9 +128,9 @@
 
     enableDefaultConfig = false;
 
-    extraConfig = {
-      ExitOnForwardFailure = "yes";
-    };
+    extraConfig = ''
+      ExitOnForwardFailure yes
+    '';
 
     matchBlocks = {
       "bitbucket.org" = {
