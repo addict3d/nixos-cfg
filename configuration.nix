@@ -153,7 +153,6 @@ in
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   security.pam.services.sddm.kwallet.enable = true;
-  system.rebuild.enableNg = true;
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "amdgpu" ];

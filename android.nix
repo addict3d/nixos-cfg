@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  programs.adb.enable = true;
+  environment.systemPackages = [ pkgs.android-tools ];
 
   users.users.nick.extraGroups = [ "adbusers" "dialout" ];
 }
