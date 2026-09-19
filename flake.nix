@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +22,7 @@
 
     rec {
       # nixosModules = import ./nixos/modules;
-      formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt;
 
       nixosConfigurations = {
         Yokan =

@@ -23,6 +23,8 @@
     packages = [ pkgs.direnv ];
   };
 
+  manual.manpages.enable = false;
+
   programs.bash = {
     enable = true;
     enableVteIntegration = true;
@@ -128,35 +130,33 @@
 
     enableDefaultConfig = false;
 
-    extraConfig = ''
-      ExitOnForwardFailure yes
-    '';
-
-    matchBlocks = {
+    settings = {
       "bitbucket.org" = {
-        identityFile = "~/.ssh/rsa_ncataria";
+        IdentityFile = "~/.ssh/rsa_ncataria";
       };
 
       "github.com" = {
-        identityFile = "~/.ssh/rsa_ncataria";
+        IdentityFile = "~/.ssh/rsa_ncataria";
       };
 
       "gitlab.com" = {
-        identityFile = "~/.ssh/rsa_ncataria";
+        IdentityFile = "~/.ssh/rsa_ncataria";
       };
 
       "*" = {
-        forwardAgent = false;
-        addKeysToAgent = "no";
-        compression = false;
-        serverAliveInterval = 0;
-        serverAliveCountMax = 3;
-        hashKnownHosts = false;
-        userKnownHostsFile = "~/.ssh/known_hosts"; 
+        ExitOnForwardFailure = true;
 
-        controlMaster = "auto";
-        controlPath = "~/.ssh/control/cm-%r-at-%h_%p";
-        controlPersist = "10m";
+        ForwardAgent = false;
+        AddKeysToAgent = "no";
+        Compression = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        HashKnownHosts = false;
+        UserKnownHostsFile = "~/.ssh/known_hosts"; 
+
+        ControlMaster = "auto";
+        ControlPath = "~/.ssh/control/cm-%r-at-%h_%p";
+        ControlPersist = "10m";
       };
     };
   };

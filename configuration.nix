@@ -70,12 +70,9 @@ in
 
   nix = {
     nixPath =
-      let
-        path = toString ./.;
-      in
       [
-        "repl=${path}/repl.nix"
-        "nixpkgs=${nixpkgsPath}" # currently 22.05
+        "repl=${./.}/repl.nix"
+        "nixpkgs=${nixpkgsPath}"
         "nixpkgs-unstable=${nixpkgsUnstablePath}"
         "/nix/var/nix/profiles/per-user/root/channels"
       ];

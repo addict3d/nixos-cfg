@@ -5,7 +5,7 @@
   ...
 }:
 
-let
+{
   nixpkgs.overlays = [
     (self: super: {
       linuxPackages_6_12 = super.linuxPackages_6_12.extend (
@@ -24,11 +24,8 @@ let
     })
   ];
 
-  my-linuxPackages = pkgs.linuxPackages_6_12;
-in
-{
   boot = {
-    kernelPackages = my-linuxPackages;
+    kernelPackages = pkgs.linuxPackages_6_12;
     kernelModules = [
       "it87"
 #      "v4l2loopback"

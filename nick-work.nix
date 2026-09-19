@@ -2,15 +2,14 @@
 
 {
 
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     "jp" = {
-      hostname = "172.16.0.240";
+      HostName = "172.16.0.240";
     };
 
     "jt" = {
-      hostname = "172.16.0.228";
+      HostName = "172.16.0.228";
     };
-
   };
 
 }
